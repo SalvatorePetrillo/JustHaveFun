@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JustHaveFun</string>
+    <string name="addevento">AddEvento</string>
+    <string name="aggiungievento">Aggiungi Evento</string>
 </resources>

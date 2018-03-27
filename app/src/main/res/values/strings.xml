@@ -8,4 +8,8 @@
     <string name="InserisciLaDescrizioneDellEvento">Inserisci la descrizione dell\'evento</string>
     <string name="conferma">Conferma</string>
     <string name="indietro">Indietro</string>
+    <string name="nomeevento">Nome Evento</string>
+    <string name="descrizioneevento">Descrizione Evento</string>
+    <string name="effettuaprenotazione">Prenota</string>
+    <string name="indietro">Indietro</string>
 </resources>

@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.salvatorepetrillo.justhavefun.Eventi">
 
-    <Button
-        android:id="@+id/button"
+    <RadioButton
+        android:id="@+id/radioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="78dp" />
+        android:text="RadioButton"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="94dp" />
 </android.support.constraint.ConstraintLayout>

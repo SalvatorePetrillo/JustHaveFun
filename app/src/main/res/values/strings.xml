@@ -2,4 +2,10 @@
     <string name="app_name">JustHaveFun</string>
     <string name="addevento">AddEvento</string>
     <string name="aggiungievento">Aggiungi Evento</string>
+    <string name="AggiungiNomeEvento">Aggiungi nome evento</string>
+    <string name="InserireIlNomeDellEvento">Inserire il nome dell\'evento</string>
+    <string name="AggiungiLaDescrizioneDellEvento">Aggiungi la descrizione dell\'evento</string>
+    <string name="InserisciLaDescrizioneDellEvento">Inserisci la descrizione dell\'evento</string>
+    <string name="conferma">Conferma</string>
+    <string name="indietro">Indietro</string>
 </resources>

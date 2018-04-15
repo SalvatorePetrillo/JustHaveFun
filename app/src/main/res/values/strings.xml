@@ -14,4 +14,6 @@
     <string name="aggiungiCodiceEvento">Aggiungi Codice Evento</string>
     <string name="inserisciCodiceEvento">Inserisci Codice Evento</string>
     <string name="NomeCompletoEvento">Nome completo dell\'evento</string>
+    <string name="inserisciRisposta">Inserisci Risposta</string>
+    <string name="dammiCodice">Dammi il codice</string>
 </resources>

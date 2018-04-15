@@ -13,4 +13,5 @@
     <string name="effettuaprenotazione">Prenota</string>
     <string name="aggiungiCodiceEvento">Aggiungi Codice Evento</string>
     <string name="inserisciCodiceEvento">Inserisci Codice Evento</string>
+    <string name="NomeCompletoEvento">Nome completo dell\'evento</string>
 </resources>

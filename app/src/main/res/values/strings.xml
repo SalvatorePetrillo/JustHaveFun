@@ -16,4 +16,5 @@
     <string name="NomeCompletoEvento">Nome completo dell\'evento</string>
     <string name="inserisciRisposta">Inserisci Risposta</string>
     <string name="dammiCodice">Dammi il codice</string>
+    <string name="avvisoPrenotazione">Ricordarsi di effettuare lo screenshot della schermata corrente e presentarsi con esso al locale.</string>
 </resources>

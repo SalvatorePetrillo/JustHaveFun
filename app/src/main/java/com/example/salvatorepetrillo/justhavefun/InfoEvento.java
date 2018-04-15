@@ -24,17 +24,19 @@ public class InfoEvento extends AppCompatActivity {
         vPrenota = findViewById(R.id.btnEffettuaPrenotazione);
         vTornaAEventi = findViewById(R.id.btnIndietro);
 
+        //come faccio a riportarmi in queste textView le informazioni inserite in aggiungi evento?
+
         vPrenota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //dovremmo passare alla layout prenotazione
             }
         });
 
         vTornaAEventi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //dovremmo ritornare alla layout eventi (che è la principale)
             }
         });
     }

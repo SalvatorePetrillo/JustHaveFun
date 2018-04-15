@@ -6,11 +6,13 @@ public class Evento {
     //definisco gli attributi
     private String nomeEvento;
     private String descrizioneEvento;
+    private String numeroEvento;
 
     // definisco il costruttore
-    public Evento(String nomeEvento, String descrizioneEvento) {
+    public Evento(String nomeEvento, String descrizioneEvento, String numeroEvento) {
         this.nomeEvento = nomeEvento;
         this.descrizioneEvento = descrizioneEvento;
+        this.numeroEvento = numeroEvento;
     }
 
     //diamo la possibilità di prendere e settare i nostri attributi
@@ -19,4 +21,8 @@ public class Evento {
 
     public String getDescrizioneEvento (){return descrizioneEvento;}
     public void setDescrizioneEvento (String descrizioneEvento){this.descrizioneEvento = descrizioneEvento;}
+
+    public String getNumeroEvento(){return  numeroEvento;}
+    public void setNumeroEvento(String numeroEvento){this.numeroEvento = numeroEvento;}
+
 }

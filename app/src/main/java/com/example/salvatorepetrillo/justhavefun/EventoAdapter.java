@@ -1,5 +1,5 @@
 package com.example.salvatorepetrillo.justhavefun;
-
+//OK
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +42,7 @@ public class EventoAdapter {
         //ottengo  l'ID corrente
         TextView vNomeCompleto = view.findViewById(R.id.txtNomeCompleto);
 
+        //imposto i valori da visualizzare
         Evento e = elencoEventi.get(i);
         vNomeCompleto.setText(e.getNomeEvento());
 

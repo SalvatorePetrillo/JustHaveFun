@@ -18,5 +18,8 @@ public class prenotazione extends AppCompatActivity {
 
         vPrenota = findViewById(R.id.txtRisposta);
         vCodice = findViewById(R.id.txtCodice);
+
+        //dobbiamo variare il messaggio di risposta a seconda di se la prenotazione è generata correttamente o meno
+        //dobbiamo generare un codice univoco da dare all'utente
     }
 }

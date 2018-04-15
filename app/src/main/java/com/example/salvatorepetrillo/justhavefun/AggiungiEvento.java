@@ -34,8 +34,12 @@ public class AggiungiEvento extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 leggiInformazioni();
+                // come facciamo a passare le informazioni lette al dataSource?
             }
         });
+
+
+        //dobbiamo ancora implementare il tasto indietro ritornando al layout precedente
 
 
     }

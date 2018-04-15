@@ -1,6 +1,8 @@
 package com.example.salvatorepetrillo.justhavefun.datamodel;
 
 // classe utile a costruire un evento
+
+//OK
 public class Evento {
 
     //definisco gli attributi

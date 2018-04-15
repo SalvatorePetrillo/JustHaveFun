@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
 
@@ -28,6 +29,24 @@ public class EventoAdapter {
 
     public long getItemId(int i) {
         return 0;
+    }
+
+    // Invocato per ottenere la view della riga da visualizzare
+    public View getView (int i, View view, ViewGroup viewGroup){
+
+        //Provvedo a costruire il layout nel caso in cui esso non sia stato iniettato
+        if (view == null){
+            view = LayoutInflater.from(context).inflate(R.layout.activity_riga_evento, null);
+        }
+
+        //ottengo  l'ID corrente
+        TextView vNomeCompleto = view.findViewById(R.id.txtNomeCompleto);
+
+        Evento e = elencoEventi.get(i);
+        vNomeCompleto.setText(e.getNomeEvento());
+
+
+        return view;
     }
 
 }

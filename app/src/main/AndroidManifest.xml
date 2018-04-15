@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".InfoEvento" />
-        <activity android:name=".AggiungiEvento"></activity>
+        <activity android:name=".AggiungiEvento" />
+        <activity android:name=".riga_evento"></activity>
     </application>
 
 </manifest>

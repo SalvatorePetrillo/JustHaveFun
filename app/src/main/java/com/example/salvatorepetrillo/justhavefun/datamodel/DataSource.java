@@ -16,19 +16,29 @@ public class DataSource {
     }
 
     //Riferimento ai dati
-    public static DataSource getIstance{
+    public static DataSource getIstance(){
         if(istance==null)
             istance = new DataSource();
+
         return istance;
     }
 
     public void addEvento(Evento evento){
-        elencoEventi.put()
+        elencoEventi.put(evento.getNumeroEvento(),evento);
     }
+
+    public void deleteEvento(String numeroEvento){
+        elencoEventi.remove(numeroEvento);
+    }
+
+    public Evento getEvento(String numeroEvento){
+        return elencoEventi.get(numeroEvento);
+    }
+
 
 
     //Mi servirà per popolare il DataSource
     private void popolaDataSource(){
-
+        
     }
 }

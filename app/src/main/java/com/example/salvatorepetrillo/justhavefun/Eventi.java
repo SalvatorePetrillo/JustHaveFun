@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.DataSource;
+import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
 
 public class Eventi extends AppCompatActivity {
 
@@ -19,6 +21,8 @@ public class Eventi extends AppCompatActivity {
     private EventoAdapter adapter;
     private DataSource dataSource;
 
+    // Chiave per il passaggio parametri alla activity di dettaglio
+    private final String EXTRA_EVENTO = "evento";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +46,26 @@ public class Eventi extends AppCompatActivity {
         });
 
         //creo l'adapter
-        //adapter = new EventoAdapter(); // Non cosa passare come secoondo parametro e non sono neanche sicuro che vada fatto qualcosa
+        adapter = new EventoAdapter(this, dataSource.getElencoEvento());
+        //associo l'adapter creato alla lista da visualizzare
+        vListaView.setAdapter(adapter);
 
-        //vListaView.setAdapter(); //logicamente non so quale adapter settare.
+        vListaView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                // E' stato selezionato una riga della lista: devo visualizzare i dettagli
+                // sulla nuova activity
+
+                // Ottengo dall'adapter lo studente da visualizzare
+                Evento evento = (Evento) adapter.getItem(i);
+
+                // Creo l'Intent per passare alla activity con il dettaglio
+                Intent intent = new Intent(view.getContext(), InfoEvento.class);
+
+                intent.putExtra(EXTRA_EVENTO,evento);
+                startActivity(intent);
+            }
+        });
 
     }
 }

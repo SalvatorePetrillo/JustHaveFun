@@ -2,8 +2,10 @@ package com.example.salvatorepetrillo.justhavefun.datamodel;
 
 // classe utile a costruire un evento
 
+import java.io.Serializable;
+
 //OK
-public class Evento {
+public class Evento implements Serializable {
 
     //definisco gli attributi
     private String nomeEvento;

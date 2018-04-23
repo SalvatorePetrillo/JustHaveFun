@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
@@ -11,7 +12,7 @@ import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
 import java.util.List;
 
 //L'adapter ci è utile per l'interfacciamento tra la listview degli eventi e i dati creati
-public class EventoAdapter {
+public class EventoAdapter extends BaseAdapter {
 
     private Context context;
     private List<Evento> elencoEventi;
@@ -48,6 +49,12 @@ public class EventoAdapter {
 
 
         return view;
+    }
+
+    public void setElencoEventi(List<Evento> elencoEventi)
+    {
+        this.elencoEventi=elencoEventi;
+        notifyDataSetChanged();
     }
 
 }

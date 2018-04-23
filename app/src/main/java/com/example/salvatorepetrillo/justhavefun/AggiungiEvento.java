@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.salvatorepetrillo.justhavefun.datamodel.DataSource;
+import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
+
 public class AggiungiEvento extends AppCompatActivity {
 
     private EditText vInserisciNome;
@@ -33,8 +36,12 @@ public class AggiungiEvento extends AppCompatActivity {
         vConferma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                leggiInformazioni();
-                // come facciamo a passare le informazioni lette al dataSource?
+                if (leggiInformazioni()) {
+                    Evento evento = new Evento(infNome, infDescrizione, infCodice);
+                    DataSource dataSource = DataSource.getIstance();
+                    dataSource.addEvento(evento);
+                    // Creo un intent e torno ...
+                }
             }
         });
 
@@ -45,10 +52,12 @@ public class AggiungiEvento extends AppCompatActivity {
     }
 
 
-    public void leggiInformazioni(){
+    public boolean leggiInformazioni(){
         infNome = vInserisciNome.getText().toString();
         infDescrizione = vInserisciDescrizione.getText().toString();
         infCodice = vInserisciCodice.getText().toString();
+
+        return infNome.length() != 0 && infDescrizione.length() != 0 && infCodice.length() != 0;
     }
 }
 

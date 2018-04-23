@@ -1,5 +1,6 @@
 package com.example.salvatorepetrillo.justhavefun;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +42,9 @@ public class AggiungiEvento extends AppCompatActivity {
                     DataSource dataSource = DataSource.getIstance();
                     dataSource.addEvento(evento);
                     // Creo un intent e torno ...
+
+                    Intent intent = new Intent(getApplicationContext(),Eventi.class);
+                    startActivity(intent);
                 }
             }
         });

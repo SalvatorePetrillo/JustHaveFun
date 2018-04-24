@@ -20,4 +20,9 @@
     <string name="nonSonoCompilatiTutti">Non sono stati compilati tutti i campi necessari!</string>
     <string name="modificainfinestrella">Modifica</string>
     <string name="eliminainfinestrella">Elimina</string>
+    <string name="modificaNomeEvento">Modifica il nome evento</string>
+    <string name="modificaDescrizioneEvento">Modifica la descrizione evento</string>
+    <string name="modificaCodiceEvento">Modificare il codice evento</string>
+    <string name="inserireDescrizioneEvento">Inserire la descrizione</string>
+    <string name="campiObbligatori">Si necessita la compilazione di tutti i campi!</string>
 </resources>

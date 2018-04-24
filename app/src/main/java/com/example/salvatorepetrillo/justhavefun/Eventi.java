@@ -109,9 +109,9 @@ public class Eventi extends AppCompatActivity {
                     Evento evento = (Evento) data.getSerializableExtra(EXTRA_EVENTO);
 
                     if (evento != null) {
-                        // Sostituisco lo studente nel datasource
+                        // Elimino l'evento nel datasource
                         dataSource.deleteEvento(evento);
-                        // Imposto il nuovo set di dati
+                        // Aggiorno l'elenco degli eventi
                         adapter.setElencoEventi(dataSource.getElencoEvento());
                     }
                 }

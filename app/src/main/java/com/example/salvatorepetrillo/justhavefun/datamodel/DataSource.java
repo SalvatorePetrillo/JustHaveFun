@@ -30,8 +30,8 @@ public class DataSource {
         elencoEventi.put(evento.getNumeroEvento(),evento);
     }
 
-    public void deleteEvento(Evento evento){
-        elencoEventi.remove(evento);
+    public void deleteEvento(String numeroEvento){
+        elencoEventi.remove(numeroEvento);
     }
 
     public Evento getEvento(String numeroEvento){

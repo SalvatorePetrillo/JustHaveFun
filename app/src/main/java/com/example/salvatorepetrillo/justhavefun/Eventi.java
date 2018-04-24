@@ -32,6 +32,8 @@ public class Eventi extends AppCompatActivity {
     private final int REQ_DELETE_EVENTO = 1;
     private final int REQ_EDIT_EVENTO = 2;
 
+    private String numeroEventoCorrente;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +96,7 @@ public class Eventi extends AppCompatActivity {
 
                     if (evento != null) {
                         // Sostituisco lo studente nel datasource
-                        dataSource.deleteEvento(evento);
+                        dataSource.deleteEvento(numeroEventoCorrente);
                         dataSource.addEvento(evento);
                         // Imposto il nuovo set di dati
                         adapter.setElencoEventi(dataSource.getElencoEvento());
@@ -110,7 +112,7 @@ public class Eventi extends AppCompatActivity {
 
                     if (evento != null) {
                         // Elimino l'evento nel datasource
-                        dataSource.deleteEvento(evento);
+                        dataSource.deleteEvento(numeroEventoCorrente);
                         // Aggiorno l'elenco degli eventi
                         adapter.setElencoEventi(dataSource.getElencoEvento());
                     }
@@ -141,13 +143,14 @@ public class Eventi extends AppCompatActivity {
 
             case R.id.itemDelete:
                 // Eliminazione evento
-                dataSource.deleteEvento(adapter.getItem(info.position));
+                dataSource.deleteEvento(adapter.getItem(info.position).getNumeroEvento());
                 adapter.setElencoEventi(dataSource.getElencoEvento());
                 return true;
 
             case R.id.itemEdit:
                 // Modifica evento
                 Evento evento = adapter.getItem(info.position); //Chiedo l'evento all'adapter
+                numeroEventoCorrente = evento.getNumeroEvento();
                 Intent intent = new Intent(getApplicationContext(), EditEventoActivity.class);
                 intent.putExtra(EXTRA_EVENTO, evento);
                 // Faccio partire l'activiy in modalità edit

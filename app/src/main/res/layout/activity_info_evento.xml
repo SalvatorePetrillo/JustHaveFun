@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/txtNomeEvento"
-        android:layout_width="145dp"
-        android:layout_height="39dp"
+        android:layout_width="229dp"
+        android:layout_height="81dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -46,8 +46,8 @@
 
     <TextView
         android:id="@+id/txtDescrizioneEvento"
-        android:layout_width="230dp"
-        android:layout_height="123dp"
+        android:layout_width="289dp"
+        android:layout_height="223dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"

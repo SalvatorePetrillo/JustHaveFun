@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.DataSource;
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
@@ -45,6 +46,10 @@ public class AggiungiEvento extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(),Eventi.class);
                     startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), R.string.nonSonoCompilatiTutti,Toast.LENGTH_LONG).show();
                 }
             }
         });

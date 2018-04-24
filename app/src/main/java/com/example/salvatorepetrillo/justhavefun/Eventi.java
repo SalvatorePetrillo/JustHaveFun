@@ -24,6 +24,7 @@ public class Eventi extends AppCompatActivity {
     // Chiave per il passaggio parametri alla activity di dettaglio
     private final String EXTRA_EVENTO = "evento";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,4 +69,6 @@ public class Eventi extends AppCompatActivity {
         });
 
     }
+
+
 }

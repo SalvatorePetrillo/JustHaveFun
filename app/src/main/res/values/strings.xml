@@ -18,12 +18,6 @@
     <string name="dammiCodice">Dammi il codice</string>
     <string name="avvisoPrenotazione">Ricordarsi di effettuare lo screenshot della schermata corrente e presentarsi con esso al locale.</string>
     <string name="nonSonoCompilatiTutti">Non sono stati compilati tutti i campi necessari!</string>
-    <string name="modificaNomeEvento">Modifica nome evento</string>
-    <string name="modicaNomeEvento">Modifica nome evento</string>
-    <string name="modificareNomeEvento">Modificare nome evento</string>
-    <string name="ModificaLaDescrizioneDellEvento">Modifica la descrizione dell\'evento</string>
-    <string name="ModificareDescrizioneEvento">Modificare descrizione evento</string>
-    <string name="modificaCodiceEvento">Modifica il codice dell\'evento</string>
-    <string name="ModificareNumeroEvento">Modificare il numero dell\'evento</string>
-    <string name="modifica">Modifica</string>
+    <string name="modificainfinestrella">Modifica</string>
+    <string name="eliminainfinestrella">Elimina</string>
 </resources>

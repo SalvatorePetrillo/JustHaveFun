@@ -17,7 +17,6 @@ public class AggiungiEvento extends AppCompatActivity {
     private EditText vInserisciDescrizione;
     private EditText vInserisciCodice;
     private Button vConferma;
-    private Button vIndietro;
 
     private String infNome;
     private String infDescrizione;
@@ -33,7 +32,6 @@ public class AggiungiEvento extends AppCompatActivity {
         vInserisciDescrizione = findViewById(R.id.editAddDescrizioneEvento);
         vInserisciCodice = findViewById(R.id.editAddNumeroEvento);
         vConferma = findViewById(R.id.btnAddConferma);
-        vIndietro = findViewById(R.id.btnTornaIndietro);
 
         vConferma.setOnClickListener(new View.OnClickListener() {
             @Override

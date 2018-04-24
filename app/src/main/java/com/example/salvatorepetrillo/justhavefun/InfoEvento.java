@@ -14,7 +14,6 @@ public class InfoEvento extends AppCompatActivity {
     private TextView vNome;
     private TextView vDescrizione;
     private Button vPrenota;
-    private Button vTornaAEventi;
 
 
     //chiave per il passaggio parametri alla activity info (mi rappresenta quello che andrò a mettere
@@ -31,7 +30,6 @@ public class InfoEvento extends AppCompatActivity {
         vNome = findViewById(R.id.txtNomeEvento);
         vDescrizione = findViewById(R.id.txtDescrizioneEvento);
         vPrenota = findViewById(R.id.btnEffettuaPrenotazione);
-        vTornaAEventi = findViewById(R.id.btnIndietro);
 
         //come faccio a riportarmi in queste textView le informazioni inserite in aggiungi evento?
 
@@ -43,13 +41,6 @@ public class InfoEvento extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),prenotazione.class);
                 startActivity(intent);
 
-            }
-        });
-
-        vTornaAEventi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //dovremmo ritornare alla layout eventi (che è la principale)
             }
         });
 

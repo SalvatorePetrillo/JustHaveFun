@@ -19,7 +19,8 @@
         <activity android:name=".InfoEvento" />
         <activity android:name=".AggiungiEvento" />
         <activity android:name=".riga_evento" />
-        <activity android:name=".prenotazione"></activity>
+        <activity android:name=".prenotazione" />
+        <activity android:name=".EditEventoActivity"></activity>
     </application>
 
 </manifest>

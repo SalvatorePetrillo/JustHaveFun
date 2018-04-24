@@ -12,6 +12,9 @@ public class Evento implements Serializable {
     private String descrizioneEvento;
     private String numeroEvento;
 
+   public Evento(){
+   }
+
     // definisco il costruttore
     public Evento(String nomeEvento, String descrizioneEvento, String numeroEvento) {
         this.nomeEvento = nomeEvento;

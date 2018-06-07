@@ -19,7 +19,7 @@ public class Eventi extends AppCompatActivity {
 
     //riferimenti alle view
     private Button vAggiungiEvento;
-    private Button vQui;
+    private Button vLogIn;
     private ListView vListaView;
 
     //Adapter e DataSource
@@ -44,10 +44,10 @@ public class Eventi extends AppCompatActivity {
 
         vAggiungiEvento = findViewById(R.id.btnAddEvento);
         vListaView = findViewById(R.id.ListaEventi);
-        vQui = findViewById(R.id.btnQui);
+        vLogIn = findViewById(R.id.btnQui);
 
         //collego la prima layout con la layout di accesso
-        vQui.setOnClickListener(new View.OnClickListener() {
+        vLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),Autenticazione.class);

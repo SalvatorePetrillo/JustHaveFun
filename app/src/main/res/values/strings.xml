@@ -30,7 +30,9 @@
     <string name="InserireEmailHint">Inserire email</string>
     <string name="InserirePassword">Password</string>
     <string name="InserirePasswordHint">Inserire la password</string>
-    <string name="accedi">Accedi</string>
     <string name="NonHaiAncoraUnAccount">Non hai ancora un account? Registrati qui:</string>
     <string name="RegistratiQui">Registrati qui</string>
+    <string name="EffettuaLogIn">Effettua Log-in</string>
+    <string name="LogIn">Log-in</string>
+    <string name="Accedi">Accedi</string>
 </resources>

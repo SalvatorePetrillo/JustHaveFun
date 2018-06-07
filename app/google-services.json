@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "16432409981",
+    "firebase_url": "https://justhavefun-4499f.firebaseio.com",
+    "project_id": "justhavefun-4499f",
+    "storage_bucket": "justhavefun-4499f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16432409981:android:6eb160fa52e48f5a",
+        "android_client_info": {
+          "package_name": "com.example.salvatorepetrillo.justhavefun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16432409981-uoalk2gaifr1ruc0smiu4pdo9unu3mgq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.salvatorepetrillo.justhavefun",
+            "certificate_hash": "3cf064c390029507ab1cd4044fb06944c08b7c97"
+          }
+        },
+        {
+          "client_id": "16432409981-ae0vrb58eqebdua1qj06fhvonjlig074.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "16432409981-ae0vrb58eqebdua1qj06fhvonjlig074.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMmFfmEP__qN5zw-pxfrysKG9GLZmvNvc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16432409981-ae0vrb58eqebdua1qj06fhvonjlig074.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -53,7 +53,7 @@ public class DataSource {
     //Mi servirà per popolare il DataSource
     private void popolaDataSource(){
         // come posso popolarlo in maniera tale che io possa aggiungere gli eventi dal tasto "Aggiungi evento"?
-        addEvento(new Evento("Festa in maschera", "Grandissiam .....", "XXXXX"));
+        addEvento(new Evento("Festa in maschera", "Grandissima .....", "XXXXX"));
         addEvento(new Evento("Festa in discoteca", "Piccolissima .....", "YYYYY"));
         addEvento(new Evento("Festa a casa", "Bruttissima .....", "ZZZZ"));
     }

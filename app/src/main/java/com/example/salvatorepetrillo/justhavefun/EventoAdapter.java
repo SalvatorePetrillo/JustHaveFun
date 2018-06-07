@@ -26,7 +26,7 @@ public class EventoAdapter extends BaseAdapter {
     public int getCount(){return  elencoEventi.size();}
 
     // Invocato per ottenere l'iesimo elemento
-    public Object getItem (int i){return elencoEventi.get(i); }
+    public Evento getItem (int i){return elencoEventi.get(i); }
 
     public long getItemId(int i) {
         return 0;

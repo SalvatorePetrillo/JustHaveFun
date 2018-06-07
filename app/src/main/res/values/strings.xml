@@ -25,4 +25,12 @@
     <string name="modificaCodiceEvento">Modificare il codice evento</string>
     <string name="inserireDescrizioneEvento">Inserire la descrizione</string>
     <string name="campiObbligatori">Si necessita la compilazione di tutti i campi!</string>
+    <string name="AccediORegistrati">Accedi o registrati</string>
+    <string name="InserireEmail">Inserisci il tuo indirizzo email</string>
+    <string name="InserireEmailHint">Inserire email</string>
+    <string name="InserirePassword">Password</string>
+    <string name="InserirePasswordHint">Inserire la password</string>
+    <string name="accedi">Accedi</string>
+    <string name="NonHaiAncoraUnAccount">Non hai ancora un account? Registrati qui:</string>
+    <string name="RegistratiQui">Registrati qui</string>
 </resources>

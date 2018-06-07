@@ -20,7 +20,8 @@
         <activity android:name=".AggiungiEvento" />
         <activity android:name=".riga_evento" />
         <activity android:name=".prenotazione" />
-        <activity android:name=".EditEventoActivity"></activity>
+        <activity android:name=".EditEventoActivity" />
+        <activity android:name=".Autenticazione"></activity>
     </application>
 
 </manifest>

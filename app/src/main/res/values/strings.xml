@@ -27,4 +27,6 @@
     <string name="ModificareNumeroEvento">Modificare il numero dell\'evento</string>
     <string name="modifica">Modifica</string>
     <string name="campiObbligatori">Si necessita un inserimento di tutti i campi per poter modificare un evento!</string>
+    <string name="Accedi">Accedi qui</string>
+    <string name="Qui">Qui</string>
 </resources>

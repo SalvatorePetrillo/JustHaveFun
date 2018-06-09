@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.DataSource;
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class AggiungiEvento extends AppCompatActivity {
 
@@ -18,9 +22,19 @@ public class AggiungiEvento extends AppCompatActivity {
     private EditText vInserisciCodice;
     private Button vConferma;
 
+    // Interfacciamento con Firebase
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+    private String FB_NODO_CODICE_UTENTE =currentFirebaseUser.getUid();
+    private final String FB_NODO_UTENTI = "utenti";
+    private final String FB_NODO_EVENTI = "eventi";
+    private final String FB_NODO_EVENTI1 = "eventi";
+
     private String infNome;
     private String infDescrizione;
     private String infCodice;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +54,21 @@ public class AggiungiEvento extends AppCompatActivity {
                     Evento evento = new Evento(infNome, infDescrizione, infCodice);
                     DataSource dataSource = DataSource.getIstance();
                     dataSource.addEvento(evento);
-                    // Creo un intent e torno ...
 
+                    // Creo un intent e torno ...
                     Intent intent = new Intent(getApplicationContext(),Eventi.class);
                     startActivity(intent);
+
+                    // Ottengo un riferimento al nodo da cui partire
+                    DatabaseReference myRef = database.getReference(FB_NODO_UTENTI);
+
+                    // Scrivo al nodo puntato
+                    myRef.child(FB_NODO_CODICE_UTENTE).child(FB_NODO_EVENTI).child(infCodice).child("Nome evento").setValue(infNome);
+                    myRef.child(FB_NODO_CODICE_UTENTE).child(FB_NODO_EVENTI).child(infCodice).child("Descrizione evento").setValue(infDescrizione);
+
+                    DatabaseReference myRef1 = database.getReference(FB_NODO_EVENTI1);
+                    myRef1.child(infCodice).child("Amministratore").setValue(FB_NODO_CODICE_UTENTE);
+                    myRef1.child(infCodice).child("Descrizione").setValue(infDescrizione);
                 }
                 else
                 {
@@ -51,9 +76,6 @@ public class AggiungiEvento extends AppCompatActivity {
                 }
             }
         });
-
-
-        //dobbiamo ancora implementare il tasto indietro ritornando al layout precedente
 
 
     }

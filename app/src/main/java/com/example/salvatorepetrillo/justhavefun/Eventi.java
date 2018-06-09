@@ -3,7 +3,6 @@ package com.example.salvatorepetrillo.justhavefun;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +13,7 @@ import android.widget.ListView;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.DataSource;
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
+
 
 public class Eventi extends AppCompatActivity {
 
@@ -33,21 +33,20 @@ public class Eventi extends AppCompatActivity {
     private final int REQ_DELETE_EVENTO = 1;
     private final int REQ_EDIT_EVENTO = 2;
 
-    private int i = 0;
-
     private String numeroEventoCorrente;
 
-
+    private static int K = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if(i==0)
-        {
-            findViewById(R.id.btnAddEvento).setVisibility(View.GONE);
-            i=i+1;
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eventi);
+
+        if(K==0)
+        {
+            findViewById(R.id.btnAddEvento).setVisibility(View.GONE);
+            K=K+1;
+        }
 
         vAggiungiEvento = findViewById(R.id.btnAddEvento);
         vListaView = findViewById(R.id.ListaEventi);

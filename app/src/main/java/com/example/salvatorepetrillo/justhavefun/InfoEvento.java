@@ -21,11 +21,19 @@ public class InfoEvento extends AppCompatActivity {
 
     private final String EXTRA_EVENTO = "evento";
 
+    private static int C = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_evento);
+
+        if(C==0)
+        {
+            findViewById(R.id.btnEffettuaPrenotazione).setVisibility(View.GONE);
+            C=C+1;
+        }
 
         vNome = findViewById(R.id.txtNomeEvento);
         vDescrizione = findViewById(R.id.txtDescrizioneEvento);

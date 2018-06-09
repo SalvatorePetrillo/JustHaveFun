@@ -1,19 +1,36 @@
 package com.example.salvatorepetrillo.justhavefun.datamodel;
 
+import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-public class DataSource {
+public class DataSource extends Fragment{
     //abbiamo creato il dataSource
 
     private Hashtable<String,Evento> elencoEventi;
 
     private static DataSource istance = null;
 
+    //Interfacciamento con Firebase
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    String FB_NODO_EVENTI1 = "Tutti gli eventi";
+    DatabaseReference myRef1 = database.getReference(FB_NODO_EVENTI1);
+
+
     //Costruttore DataSource
-    private DataSource(){
+    public DataSource(){
         elencoEventi = new Hashtable<>();
         popolaDataSource();
     }
@@ -50,11 +67,13 @@ public class DataSource {
         return risultato;
     }
 
+
+
     //Mi servirà per popolare il DataSource
-    private void popolaDataSource(){
-        // come posso popolarlo in maniera tale che io possa aggiungere gli eventi dal tasto "Aggiungi evento"?
+    private void popolaDataSource() {
         addEvento(new Evento("Festa in maschera", "Grandissima .....", "XXXXX"));
         addEvento(new Evento("Festa in discoteca", "Piccolissima .....", "YYYYY"));
         addEvento(new Evento("Festa a casa", "Bruttissima .....", "ZZZZ"));
-    }
+        }
+
 }

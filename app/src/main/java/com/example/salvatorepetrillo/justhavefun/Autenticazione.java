@@ -68,6 +68,7 @@ public class Autenticazione extends AppCompatActivity implements View.OnClickLis
                                 Intent intent = new Intent(getApplicationContext(),Eventi.class);
                                 startActivity(intent);
                                 findViewById(R.id.btnAddEvento).setVisibility(View.VISIBLE);
+                                findViewById(R.id.btnEffettuaPrenotazione).setVisibility(View.VISIBLE);
                             }
                             else
                             {

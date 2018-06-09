@@ -13,6 +13,11 @@ import android.widget.ListView;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.DataSource;
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class Eventi extends AppCompatActivity {
@@ -35,6 +40,11 @@ public class Eventi extends AppCompatActivity {
 
     private String numeroEventoCorrente;
 
+    //Interfacciamento con Firebase
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    String FB_NODO_EVENTI1 = "Tutti gli eventi";
+    DatabaseReference myRef1 = database.getReference(FB_NODO_EVENTI1);
+
     private static int K = 0;
 
     @Override
@@ -47,6 +57,7 @@ public class Eventi extends AppCompatActivity {
             findViewById(R.id.btnAddEvento).setVisibility(View.GONE);
             K=K+1;
         }
+
 
         vAggiungiEvento = findViewById(R.id.btnAddEvento);
         vListaView = findViewById(R.id.ListaEventi);
@@ -63,7 +74,6 @@ public class Eventi extends AppCompatActivity {
 
         //ottengo i riferimenti dal DataSource
         dataSource = DataSource.getIstance();
-
 
         // Azione aggiungi
         vAggiungiEvento.setOnClickListener(new View.OnClickListener() {

@@ -29,12 +29,11 @@ public class AggiungiEvento extends AppCompatActivity {
     private String FB_NODO_CODICE_UTENTE =currentFirebaseUser.getUid();
     private final String FB_NODO_UTENTI = "utenti";
     private final String FB_NODO_EVENTI = "eventi";
-    private final String FB_NODO_EVENTI1 = "eventi";
+    private final String FB_NODO_EVENTI1 = "Tutti gli eventi";
 
     private String infNome;
     private String infDescrizione;
     private String infCodice;
-    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

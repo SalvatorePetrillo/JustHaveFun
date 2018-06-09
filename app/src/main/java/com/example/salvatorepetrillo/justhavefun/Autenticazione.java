@@ -31,13 +31,14 @@ public class Autenticazione extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_autenticazione);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
         vInserisciEmail = findViewById(R.id.editEmail);
         vInserisciPassword = findViewById(R.id.editPassword);
         vAccedi = findViewById(R.id.btnAccedi);
         vRegistrati = findViewById(R.id.btnRegistrati);
 
         vRegistrati.setOnClickListener(this);
-
+        vAccedi.setOnClickListener(this);
 
         }
 
@@ -77,6 +78,36 @@ public class Autenticazione extends AppCompatActivity implements View.OnClickLis
 
         }
 
+        private void userLogin()
+        {
+            String email = vInserisciEmail.getText().toString();
+            String password = vInserisciPassword.getText().toString();
+
+            if(TextUtils.isEmpty(email))
+            {
+                Toast.makeText(getApplicationContext(),"Per favore inserisci l'indirizzo email",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(TextUtils.isEmpty(password))
+            {
+                Toast.makeText(getApplicationContext(),"Per favore inserisci la password",Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            firebaseAuth.signInWithEmailAndPassword(email,password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        }
+                    });
+            if(firebaseAuth.getCurrentUser() != null)
+            {
+                finish();
+                Intent intent = new Intent(getApplicationContext(),Eventi.class);
+                startActivity(intent);
+            }
+        }
 
 
         public void onClick(View view)
@@ -84,6 +115,10 @@ public class Autenticazione extends AppCompatActivity implements View.OnClickLis
             if(view == vRegistrati)
             {
                 registerUser();
+            }
+            if(view == vAccedi)
+            {
+                userLogin();
             }
         }
 

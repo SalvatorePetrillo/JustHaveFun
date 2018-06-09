@@ -98,15 +98,18 @@ public class Autenticazione extends AppCompatActivity implements View.OnClickLis
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-
+                            if(task.isSuccessful())
+                            {
+                                Toast.makeText(getApplicationContext(),"L'accesso è andato a buon fine.",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(),Eventi.class);
+                                startActivity(intent);
+                            }
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(),"L'accesso non è andata a buon fine,riprova.",Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
-            if(firebaseAuth.getCurrentUser() != null)
-            {
-                finish();
-                Intent intent = new Intent(getApplicationContext(),Eventi.class);
-                startActivity(intent);
-            }
         }
 
 

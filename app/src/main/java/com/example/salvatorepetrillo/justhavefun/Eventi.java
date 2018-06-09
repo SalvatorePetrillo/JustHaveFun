@@ -33,12 +33,19 @@ public class Eventi extends AppCompatActivity {
     private final int REQ_DELETE_EVENTO = 1;
     private final int REQ_EDIT_EVENTO = 2;
 
+    private int i = 0;
+
     private String numeroEventoCorrente;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(i==0)
+        {
+            findViewById(R.id.btnAddEvento).setVisibility(View.GONE);
+            i=i+1;
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eventi);
 
@@ -93,6 +100,7 @@ public class Eventi extends AppCompatActivity {
         registerForContextMenu(vListaView);
 
     }
+
 
     //Questo codice che segue riguarda tutto il menù a tendina
     //Mi da la possibilità di modificare o eliminare un evento

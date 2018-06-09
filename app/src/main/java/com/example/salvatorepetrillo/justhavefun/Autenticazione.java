@@ -67,6 +67,7 @@ public class Autenticazione extends AppCompatActivity implements View.OnClickLis
                                 Toast.makeText(getApplicationContext(),"La registrazione è andata a buon fine.",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(),Eventi.class);
                                 startActivity(intent);
+                                findViewById(R.id.btnAddEvento).setVisibility(View.VISIBLE);
                             }
                             else
                             {

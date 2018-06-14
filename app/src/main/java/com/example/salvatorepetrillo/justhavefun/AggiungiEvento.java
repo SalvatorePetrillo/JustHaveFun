@@ -67,6 +67,7 @@ public class AggiungiEvento extends AppCompatActivity {
 
                     DatabaseReference myRef1 = database.getReference(FB_NODO_EVENTI1);
                     myRef1.child(infCodice).child("Amministratore").setValue(FB_NODO_CODICE_UTENTE);
+                    myRef1.child(infCodice).child("Nome evento").setValue(infNome);
                     myRef1.child(infCodice).child("Descrizione").setValue(infDescrizione);
                 }
                 else

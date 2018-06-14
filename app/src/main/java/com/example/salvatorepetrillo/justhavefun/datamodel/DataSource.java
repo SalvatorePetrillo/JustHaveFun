@@ -164,10 +164,10 @@ public class DataSource extends Fragment{
 
 
     //Mi servirà per popolare il DataSource
-    private void popolaDataSource() {
+    /*private void popolaDataSource() {
         addEvento(new Evento("Festa in maschera", "Grandissima .....", "XXXXX"));
         addEvento(new Evento("Festa in discoteca", "Piccolissima .....", "YYYYY"));
         addEvento(new Evento("Festa a casa", "Bruttissima .....", "ZZZZ"));
-        }
+        }*/
 
 }

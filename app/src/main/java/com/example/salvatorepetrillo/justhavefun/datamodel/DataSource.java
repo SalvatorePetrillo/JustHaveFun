@@ -54,6 +54,8 @@ public class DataSource extends Fragment{
                 {
                     Evento evento = new Evento();
                     evento.setNomeEvento(elemento.child("Nome evento").getValue(String.class));
+                    evento.setDescrizioneEvento(elemento.child("Descrizione").getValue(String.class));
+                    evento.setNumeroEvento(elemento.getKey());
                     elencoEventi.put(elemento.getKey(),evento);
                 }
                 notifica.eventiAggiornati();

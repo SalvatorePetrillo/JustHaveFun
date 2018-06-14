@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.DataSource;
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
@@ -87,6 +88,19 @@ public class Eventi extends AppCompatActivity {
         //creo l'adapter
         adapter = new EventoAdapter(this, dataSource.getElencoEvento());
         //associo l'adapter creato alla lista da visualizzare
+
+
+
+        dataSource.iniziaOsservazioneStudenti(new DataSource.UpdateListener() {
+            @Override
+            public void eventiAggiornati() {
+                adapter.setElencoEventi(dataSource.ElencoEventi());
+            }
+        });
+
+
+
+
         vListaView.setAdapter(adapter);
 
         vListaView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -109,6 +123,17 @@ public class Eventi extends AppCompatActivity {
         registerForContextMenu(vListaView);
 
     }
+
+
+
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        dataSource.terminaOsservazioneStudenti();
+    }
+
+
+
 
 
     //Questo codice che segue riguarda tutto il menù a tendina

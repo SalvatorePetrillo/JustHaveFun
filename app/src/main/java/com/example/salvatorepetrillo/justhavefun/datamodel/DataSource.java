@@ -19,21 +19,115 @@ import java.util.Map;
 public class DataSource extends Fragment{
     //abbiamo creato il dataSource
 
+
+
+
+    private final static String TAG = "DataStore";
+    private final static String DB_EVENTI = "Tutti gli eventi";
+    private final static String KEY_AMMINISTRATORE = "amministratore";
+    private final static String KEY_DESCRIZIONE = "Descrizione";
+    private ValueEventListener listenerEventi;
+    private ArrayList<Evento> eventi;
+    public DataSource() {
+        eventi = new ArrayList<>();
+    }
+    public interface UpdateListener {
+        void eventiAggiornati();
+    }
+    public void iniziaOsservazioneStudenti(final UpdateListener notifica) {
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference(DB_EVENTI);
+
+        listenerEventi = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                eventi.clear();
+                for (DataSnapshot elemento:dataSnapshot.getChildren()) {
+                    Evento evento = new Evento();
+                    evento.setNomeEvento(elemento.getKey());
+                    evento.setDescrizioneEvento(elemento.child(KEY_DESCRIZIONE).getValue(String.class));
+                    eventi.add(evento);
+                }
+                notifica.eventiAggiornati();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        ref.addValueEventListener(listenerEventi);
+    }
+
+    public void terminaOsservazioneStudenti() {
+        if (listenerEventi != null)
+            FirebaseDatabase.getInstance().getReference(DB_EVENTI).removeEventListener(listenerEventi);
+    }
+    public void aggiungiEvento(Evento evento){
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(DB_EVENTI).child(evento.getNomeEvento());
+        ref.setValue(evento);
+    }
+    public void aggiornaEvento(Evento evento) {
+        int posizione = getEventoIndex(evento.getNomeEvento());
+        if (posizione == -1)
+            aggiungiEvento(evento);
+        else
+            eventi.set(posizione, evento);
+    }
+    public void eliminaEvento(String nomeEvento) {
+        int posizione = getEventoIndex(nomeEvento);
+        if (posizione != -1)
+            eventi.remove(posizione);
+    }
+
+    public Evento leggiEvento(String nomeEvento) {
+        int posizione = getEventoIndex(nomeEvento);
+        if (posizione == -1)
+            return null;
+        else
+            return eventi.get(posizione);
+    }
+
+    public List<Evento> ElencoEventi() {
+        return eventi;
+    }
+    public int numeroStudenti() {
+        return eventi.size();
+    }
+
+    private int getEventoIndex(String nomeEvento) {
+        boolean trovato = false;
+        int index = 0;
+        while (!trovato && index < eventi.size()) {
+            if (eventi.get(index).getNomeEvento().equals(nomeEvento)) {
+                return index;
+            }
+            ++index;
+        }
+        return -1;
+    }
+
+
+
+
+
     private Hashtable<String,Evento> elencoEventi;
 
     private static DataSource istance = null;
 
     //Interfacciamento con Firebase
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+   /* FirebaseDatabase database = FirebaseDatabase.getInstance();
     String FB_NODO_EVENTI1 = "Tutti gli eventi";
-    DatabaseReference myRef1 = database.getReference(FB_NODO_EVENTI1);
+    DatabaseReference myRef1 = database.getReference(FB_NODO_EVENTI1);*/
 
 
     //Costruttore DataSource
-    public DataSource(){
+    /*public DataSource(){
         elencoEventi = new Hashtable<>();
         popolaDataSource();
-    }
+    }*/
 
     //Riferimento ai dati
     public static DataSource getIstance(){

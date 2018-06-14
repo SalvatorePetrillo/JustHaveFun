@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
 
+import java.util.Hashtable;
 import java.util.List;
 
 //L'adapter ci è utile per l'interfacciamento tra la listview degli eventi e i dati creati
@@ -20,6 +21,12 @@ public class EventoAdapter extends BaseAdapter {
     public EventoAdapter(Context context, List<Evento> elencoEventi) {
         this.context = context;
         this.elencoEventi = elencoEventi;
+    }
+
+    public void update(List<Evento> newList)
+    {
+        elencoEventi = newList;
+        notifyDataSetChanged();
     }
 
     // Invocato per ottenere il numero di elementi nella lista

@@ -19,35 +19,42 @@ import java.util.Map;
 public class DataSource extends Fragment{
     //abbiamo creato il dataSource
 
+    private Hashtable<String,Evento> elencoEventi;
+
+    private static DataSource istance = null;
 
 
+    private final static String FB_NODO_EVENTI1 = "Tutti gli eventi";
 
-    private final static String TAG = "DataStore";
-    private final static String DB_EVENTI = "Tutti gli eventi";
-    private final static String KEY_AMMINISTRATORE = "amministratore";
-    private final static String KEY_DESCRIZIONE = "Descrizione";
+
     private ValueEventListener listenerEventi;
-    private ArrayList<Evento> eventi;
-    public DataSource() {
-        eventi = new ArrayList<>();
+
+
+    //Costruttore DataSource
+    public DataSource(){
+        elencoEventi = new Hashtable<>();
     }
-    public interface UpdateListener {
+
+
+    public interface UpdateListener
+    {
         void eventiAggiornati();
     }
-    public void iniziaOsservazioneStudenti(final UpdateListener notifica) {
 
+    public void iniziaOsservazioneEventi(final UpdateListener notifica)
+    {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference(DB_EVENTI);
+        DatabaseReference ref = database.getReference(FB_NODO_EVENTI1);
 
         listenerEventi = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                eventi.clear();
-                for (DataSnapshot elemento:dataSnapshot.getChildren()) {
+                elencoEventi.clear();
+                for (DataSnapshot elemento:dataSnapshot.getChildren())
+                {
                     Evento evento = new Evento();
-                    evento.setNomeEvento(elemento.getKey());
-                    evento.setDescrizioneEvento(elemento.child(KEY_DESCRIZIONE).getValue(String.class));
-                    eventi.add(evento);
+                    evento.setNomeEvento(elemento.child("Nome evento").getValue(String.class));
+                    elencoEventi.put(elemento.getKey(),evento);
                 }
                 notifica.eventiAggiornati();
             }
@@ -61,73 +68,14 @@ public class DataSource extends Fragment{
         ref.addValueEventListener(listenerEventi);
     }
 
-    public void terminaOsservazioneStudenti() {
-        if (listenerEventi != null)
-            FirebaseDatabase.getInstance().getReference(DB_EVENTI).removeEventListener(listenerEventi);
-    }
-    public void aggiungiEvento(Evento evento){
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(DB_EVENTI).child(evento.getNomeEvento());
-        ref.setValue(evento);
-    }
-    public void aggiornaEvento(Evento evento) {
-        int posizione = getEventoIndex(evento.getNomeEvento());
-        if (posizione == -1)
-            aggiungiEvento(evento);
-        else
-            eventi.set(posizione, evento);
-    }
-    public void eliminaEvento(String nomeEvento) {
-        int posizione = getEventoIndex(nomeEvento);
-        if (posizione != -1)
-            eventi.remove(posizione);
-    }
-
-    public Evento leggiEvento(String nomeEvento) {
-        int posizione = getEventoIndex(nomeEvento);
-        if (posizione == -1)
-            return null;
-        else
-            return eventi.get(posizione);
-    }
-
-    public List<Evento> ElencoEventi() {
-        return eventi;
-    }
-    public int numeroStudenti() {
-        return eventi.size();
-    }
-
-    private int getEventoIndex(String nomeEvento) {
-        boolean trovato = false;
-        int index = 0;
-        while (!trovato && index < eventi.size()) {
-            if (eventi.get(index).getNomeEvento().equals(nomeEvento)) {
-                return index;
-            }
-            ++index;
+    public void terminaOsservazioneStudenti()
+    {
+        if(listenerEventi != null)
+        {
+            FirebaseDatabase.getInstance().getReference(FB_NODO_EVENTI1).removeEventListener(listenerEventi);
         }
-        return -1;
     }
 
-
-
-
-
-    private Hashtable<String,Evento> elencoEventi;
-
-    private static DataSource istance = null;
-
-    //Interfacciamento con Firebase
-   /* FirebaseDatabase database = FirebaseDatabase.getInstance();
-    String FB_NODO_EVENTI1 = "Tutti gli eventi";
-    DatabaseReference myRef1 = database.getReference(FB_NODO_EVENTI1);*/
-
-
-    //Costruttore DataSource
-    /*public DataSource(){
-        elencoEventi = new Hashtable<>();
-        popolaDataSource();
-    }*/
 
     //Riferimento ai dati
     public static DataSource getIstance(){
@@ -160,14 +108,5 @@ public class DataSource extends Fragment{
         }
         return risultato;
     }
-
-
-
-    //Mi servirà per popolare il DataSource
-    /*private void popolaDataSource() {
-        addEvento(new Evento("Festa in maschera", "Grandissima .....", "XXXXX"));
-        addEvento(new Evento("Festa in discoteca", "Piccolissima .....", "YYYYY"));
-        addEvento(new Evento("Festa a casa", "Bruttissima .....", "ZZZZ"));
-        }*/
 
 }

@@ -11,6 +11,7 @@ public class Evento implements Serializable {
     private String nomeEvento;
     private String descrizioneEvento;
     private String numeroEvento;
+    private String amministratoreEvento;
 
    public Evento(){
    }
@@ -20,6 +21,7 @@ public class Evento implements Serializable {
         this.nomeEvento = nomeEvento;
         this.descrizioneEvento = descrizioneEvento;
         this.numeroEvento = numeroEvento;
+        this.amministratoreEvento = amministratoreEvento;
     }
 
     //diamo la possibilità di prendere e settare i nostri attributi
@@ -31,5 +33,8 @@ public class Evento implements Serializable {
 
     public String getNumeroEvento(){return  numeroEvento;}
     public void setNumeroEvento(String numeroEvento){this.numeroEvento = numeroEvento;}
+
+    public String getAmministratoreEvento(){return  amministratoreEvento;}
+    public void setAmministratoreEvento(String amministratoreEvento){this.amministratoreEvento = amministratoreEvento;}
 
 }

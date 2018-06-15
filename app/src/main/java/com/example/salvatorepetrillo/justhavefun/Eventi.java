@@ -197,20 +197,7 @@ public class Eventi extends AppCompatActivity {
         Evento evento = adapter.getItem(info.position); //Chiedo l'evento all'adapter
         // All'interno del menù a tendina che si apre devo capire l'elemento selezionato
 
-        final String codice = evento.getNumeroEvento();
-
-        myRef1.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                amm = dataSnapshot.child(codice).child("Amministratore").getValue(String.class);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        String amm = evento.getAmministratoreEvento();
 
         if (CODICE_UTENTE.equals(amm)) {
 

@@ -43,7 +43,7 @@ public class DataSource extends Fragment{
 
     public void iniziaOsservazioneEventi(final UpdateListener notifica)
     {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference(FB_NODO_EVENTI1);
 
         listenerEventi = new ValueEventListener() {

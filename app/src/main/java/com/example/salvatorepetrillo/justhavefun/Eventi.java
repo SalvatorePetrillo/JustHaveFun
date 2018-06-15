@@ -3,6 +3,7 @@ package com.example.salvatorepetrillo.justhavefun;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -10,9 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.DataSource;
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,12 +42,18 @@ public class Eventi extends AppCompatActivity {
     private final int REQ_DELETE_EVENTO = 1;
     private final int REQ_EDIT_EVENTO = 2;
 
+    private String amm;
+    private String NumEvento;
+
     private String numeroEventoCorrente;
 
     //Interfacciamento con Firebase
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     String FB_NODO_EVENTI1 = "Tutti gli eventi";
     DatabaseReference myRef1 = database.getReference(FB_NODO_EVENTI1);
+
+    FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+    private String CODICE_UTENTE =currentFirebaseUser.getUid();
 
     private static int K = 0;
 
@@ -115,6 +125,7 @@ public class Eventi extends AppCompatActivity {
             }
         });
 
+
         // Imposto il menù a tendina sulle righe della listview
         registerForContextMenu(vListaView);
 
@@ -129,12 +140,12 @@ public class Eventi extends AppCompatActivity {
 
     //Questo codice che segue riguarda tutto il menù a tendina
     //Mi da la possibilità di modificare o eliminare un evento
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         switch (requestCode) {
 
             case REQ_EDIT_EVENTO :    // Modifico l'evento
-                if (resultCode == RESULT_OK) {   // Pulsante Modifica premuto
+                if (resultCode == RESULT_OK  ) {   // Pulsante Modifica premuto
 
                     // Estraggo le informazioni sull'evento in questione
                     Evento evento = (Evento) data.getSerializableExtra(EXTRA_EVENTO);
@@ -174,6 +185,7 @@ public class Eventi extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.lista_eventi, menu);
     }
@@ -182,29 +194,58 @@ public class Eventi extends AppCompatActivity {
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
+        Evento evento = adapter.getItem(info.position); //Chiedo l'evento all'adapter
         // All'interno del menù a tendina che si apre devo capire l'elemento selezionato
 
-        switch (item.getItemId()) {
+        final String codice = evento.getNumeroEvento();
 
-            case R.id.itemDelete:
-                // Eliminazione evento
-                dataSource.deleteEvento(adapter.getItem(info.position).getNumeroEvento());
-                adapter.setElencoEventi(dataSource.getElencoEvento());
-                return true;
+        myRef1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                amm = dataSnapshot.child(codice).child("Amministratore").getValue(String.class);
 
-            case R.id.itemEdit:
-                // Modifica evento
-                Evento evento = adapter.getItem(info.position); //Chiedo l'evento all'adapter
-                numeroEventoCorrente = evento.getNumeroEvento();
-                Intent intent = new Intent(getApplicationContext(), EditEventoActivity.class);
-                intent.putExtra(EXTRA_EVENTO, evento);
-                // Faccio partire l'activiy in modalità edit
-                startActivityForResult(intent, REQ_EDIT_EVENTO);
-                return true;
+            }
 
-            default:
-                return super.onContextItemSelected(item);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        if (CODICE_UTENTE.equals(amm)) {
+
+            switch (item.getItemId()) {
+
+                case R.id.itemDelete:
+                    // Eliminazione evento
+                    dataSource.deleteEvento(adapter.getItem(info.position).getNumeroEvento());
+                    adapter.setElencoEventi(dataSource.getElencoEvento());
+                    return true;
+
+                case R.id.itemEdit:
+                    // Modifica evento
+
+                    numeroEventoCorrente = evento.getNumeroEvento();
+                    Intent intent = new Intent(getApplicationContext(), EditEventoActivity.class);
+                    intent.putExtra(EXTRA_EVENTO, evento);
+                    // Faccio partire l'activiy in modalità edit
+                    startActivityForResult(intent, REQ_EDIT_EVENTO);
+                    return true;
+
+                default:
+                    return super.onContextItemSelected(item);
+            }
+
         }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Non sei amministratore per questo evento.", Toast.LENGTH_SHORT).show();
+        }
+
+        /*if (evento.getNumeroEvento().matches(currentFirebaseUser.getUid())){
+
+        }*/
+        return super.onContextItemSelected(item);
     }
 
 }

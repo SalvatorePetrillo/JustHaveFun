@@ -25,6 +25,7 @@ public class Autenticazione extends AppCompatActivity implements View.OnClickLis
     private Button vRegistrati;
     private FirebaseAuth firebaseAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class Autenticazione extends AppCompatActivity implements View.OnClickLis
         vAccedi.setOnClickListener(this);
 
         }
+
 
         private  void registerUser()
         {

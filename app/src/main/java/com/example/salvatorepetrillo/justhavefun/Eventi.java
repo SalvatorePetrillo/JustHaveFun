@@ -3,7 +3,6 @@ package com.example.salvatorepetrillo.justhavefun;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,19 +16,17 @@ import com.example.salvatorepetrillo.justhavefun.datamodel.DataSource;
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 
-public class Eventi extends AppCompatActivity {
+public class Eventi extends AppCompatActivity implements View.OnClickListener{
 
     //riferimenti alle view
     private Button vAggiungiEvento;
     private Button vLogIn;
+    private Button vLogOut;
     private ListView vListaView;
+
 
     //Adapter e DataSource
     private EventoAdapter adapter;
@@ -42,18 +39,11 @@ public class Eventi extends AppCompatActivity {
     private final int REQ_DELETE_EVENTO = 1;
     private final int REQ_EDIT_EVENTO = 2;
 
-    private String amm;
-    private String NumEvento;
-
     private String numeroEventoCorrente;
 
-    //Interfacciamento con Firebase
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    String FB_NODO_EVENTI1 = "Tutti gli eventi";
-    DatabaseReference myRef1 = database.getReference(FB_NODO_EVENTI1);
-
     FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-    private String CODICE_UTENTE =currentFirebaseUser.getUid();
+    public String CODICE_UTENTE="0";
+
 
     private static int K = 0;
 
@@ -72,6 +62,10 @@ public class Eventi extends AppCompatActivity {
         vAggiungiEvento = findViewById(R.id.btnAddEvento);
         vListaView = findViewById(R.id.ListaEventi);
         vLogIn = findViewById(R.id.btnQui);
+        vLogOut = findViewById(R.id.btnOut);
+
+        vLogOut.setOnClickListener(this);
+
 
         //collego la prima layout con la layout di accesso
         vLogIn.setOnClickListener(new View.OnClickListener() {
@@ -190,6 +184,8 @@ public class Eventi extends AppCompatActivity {
         inflater.inflate(R.menu.lista_eventi, menu);
     }
 
+
+
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -198,6 +194,15 @@ public class Eventi extends AppCompatActivity {
         // All'interno del menù a tendina che si apre devo capire l'elemento selezionato
 
         String amm = evento.getAmministratoreEvento();
+
+        if(currentFirebaseUser==null)
+        {
+            Toast.makeText(getApplicationContext(), "Non hai fatto alcun accesso. ", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            CODICE_UTENTE =currentFirebaseUser.getUid();
+        }
 
         if (CODICE_UTENTE.equals(amm)) {
 
@@ -229,10 +234,29 @@ public class Eventi extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Non sei amministratore per questo evento.", Toast.LENGTH_SHORT).show();
         }
 
-        /*if (evento.getNumeroEvento().matches(currentFirebaseUser.getUid())){
-
-        }*/
         return super.onContextItemSelected(item);
+    }
+
+    public void SignOut()
+    {
+        if(currentFirebaseUser != null) {
+            FirebaseAuth.getInstance().signOut();
+            Toast.makeText(getApplicationContext(), "Il LOG-OUT ha avuto esito positivo. ", Toast.LENGTH_SHORT).show();
+            CODICE_UTENTE="0";
+            currentFirebaseUser=null;
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Non hai fatto alcun accesso. ", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onClick(View view)
+    {
+        if(view == vLogOut)
+        {
+            SignOut();
+        }
     }
 
 }

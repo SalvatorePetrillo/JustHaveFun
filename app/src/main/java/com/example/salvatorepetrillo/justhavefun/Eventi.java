@@ -180,9 +180,6 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
                         // Elimino l'evento nel datasource
                         dataSource.deleteEvento(numeroEventoCorrente);
 
-                        // All'atto dell'eliminazione cancello anche dal Database
-                        myRef.child(evento.getNumeroEvento()).removeValue();
-
                         // Aggiorno l'elenco degli eventi
                         adapter.setElencoEventi(dataSource.getElencoEvento());
                     }
@@ -232,6 +229,8 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
 
                 case R.id.itemDelete:
                     // Eliminazione evento
+                    // All'atto dell'eliminazione cancello anche dal Database
+                    myRef.child(evento.getNumeroEvento()).removeValue();
                     dataSource.deleteEvento(adapter.getItem(info.position).getNumeroEvento());
                     adapter.setElencoEventi(dataSource.getElencoEvento());
                     return true;

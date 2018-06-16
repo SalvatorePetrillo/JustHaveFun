@@ -64,7 +64,7 @@ public class EditEventoActivity extends AppCompatActivity {
         vModifica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Evento evento = leggiDatiEvento();
+                Evento evento = leggiDatiEvento();
                 if (evento != null) { // Dati validi
                     myRef.child(evento.getNumeroEvento()).child("Nome evento").setValue(evento.getNomeEvento());
                     myRef.child(evento.getNumeroEvento()).child("Descrizione").setValue(evento.getDescrizioneEvento());

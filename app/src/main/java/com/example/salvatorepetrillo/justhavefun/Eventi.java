@@ -48,7 +48,7 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
     private String numeroEventoCorrente;
 
     FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-    public String CODICE_UTENTE;
+    public String CODICE_UTENTE="0";
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference(FB_NODO_EVENTI1);

@@ -220,6 +220,7 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
         }
         else
         {
+
             CODICE_UTENTE =currentFirebaseUser.getUid();
         }
 

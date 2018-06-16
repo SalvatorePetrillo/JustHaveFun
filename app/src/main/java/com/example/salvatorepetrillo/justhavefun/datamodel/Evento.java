@@ -38,3 +38,4 @@ public class Evento implements Serializable {
     public void setAmministratoreEvento(String amministratoreEvento){this.amministratoreEvento = amministratoreEvento;}
 
 }
+

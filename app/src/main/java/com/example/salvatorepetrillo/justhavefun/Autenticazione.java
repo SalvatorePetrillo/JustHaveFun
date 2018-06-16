@@ -108,7 +108,7 @@ public class Autenticazione extends AppCompatActivity implements View.OnClickLis
                             }
                             else
                             {
-                                Toast.makeText(getApplicationContext(),"L'accesso non è andata a buon fine,riprova.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"L'accesso non è andato a buon fine,riprova.",Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

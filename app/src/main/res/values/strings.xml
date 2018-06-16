@@ -35,4 +35,5 @@
     <string name="LogIn">Log-in</string>
     <string name="Accedi">Accedi</string>
     <string name="CliccaAccediORegistrati">Clicca su registra se non hai già un account, altrimenti accedi.</string>
+    <string name="LogOut">Log-out</string>
 </resources>

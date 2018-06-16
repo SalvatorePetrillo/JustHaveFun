@@ -41,7 +41,7 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
     // Chiave per il passaggio parametri alla activity di dettaglio
     private final String EXTRA_EVENTO = "evento";
 
-    // Costanti con i result code
+    // Costanti con i result code prefissate
     private final int REQ_DELETE_EVENTO = 1;
     private final int REQ_EDIT_EVENTO = 2;
 

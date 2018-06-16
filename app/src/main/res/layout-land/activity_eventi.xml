@@ -6,52 +6,68 @@
     android:layout_height="match_parent"
     tools:context="com.example.salvatorepetrillo.justhavefun.Eventi">
 
-    <Button
-        android:id="@+id/btnAddEvento"
-        android:layout_width="295dp"
-        android:layout_height="62dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/aggiungievento"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnQui" />
-
-    <ListView
-        android:id="@+id/ListaEventi"
-        android:layout_width="502dp"
-        android:layout_height="142dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddEvento" />
-
     <TextView
         android:id="@+id/txtAccedi"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="224dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="52dp"
         android:text="@string/EffettuaLogIn"
-        app:layout_constraintBottom_toBottomOf="@+id/btnQui"
-        app:layout_constraintEnd_toStartOf="@+id/btnQui"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/ListaEventi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnQui"
         android:layout_width="wrap_content"
-        android:layout_height="38dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:text="@string/LogIn"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddEvento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAccedi"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <Button
+        android:id="@+id/btnOut"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/LogOut"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddEvento"
+        app:layout_constraintEnd_toStartOf="@+id/ListaEventi"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toEndOf="@+id/btnQui"
+        app:layout_constraintTop_toBottomOf="@+id/txtAccedi"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <ListView
+        android:id="@+id/ListaEventi"
+        android:layout_width="308dp"
+        android:layout_height="293dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/txtAccedi"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddEvento"
+        android:layout_width="252dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/aggiungievento"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ListaEventi"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -93,8 +93,10 @@ public class DataSource extends Fragment{
         elencoEventi.put(evento.getNumeroEvento(),evento);
     }
 
-    public void deleteEvento(String numeroEvento){
+    public void deleteEvento(final String numeroEvento){
+
         elencoEventi.remove(numeroEvento);
+
     }
 
     public Evento getEvento(String numeroEvento){

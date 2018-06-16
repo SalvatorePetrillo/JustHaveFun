@@ -3,6 +3,7 @@ package com.example.salvatorepetrillo.justhavefun;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -10,12 +11,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.DataSource;
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
@@ -26,6 +29,9 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
     private Button vLogIn;
     private Button vLogOut;
     private ListView vListaView;
+    private TextView vMessaggio;
+
+    final String FB_NODO_EVENTI1 = "Tutti gli eventi";
 
 
     //Adapter e DataSource
@@ -44,24 +50,34 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
     FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
     public String CODICE_UTENTE="0";
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference(FB_NODO_EVENTI1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eventi);
 
-        if(currentFirebaseUser == null){
-            findViewById(R.id.btnAddEvento).setVisibility(View.GONE);
-        }
-        else{
-            findViewById(R.id.btnAddEvento).setVisibility(View.VISIBLE);
-        }
-
-
         vAggiungiEvento = findViewById(R.id.btnAddEvento);
         vListaView = findViewById(R.id.ListaEventi);
         vLogIn = findViewById(R.id.btnQui);
         vLogOut = findViewById(R.id.btnOut);
+        vMessaggio = findViewById(R.id.txtAccedi);
+
+        if (currentFirebaseUser==null)
+        {
+            findViewById(R.id.btnAddEvento).setVisibility(View.GONE);
+            findViewById(R.id.btnOut).setVisibility(View.GONE);
+            findViewById(R.id.btnQui).setVisibility(View.VISIBLE);
+            vMessaggio.setText("Per effettuare il Log-in :  ");
+        }
+        else
+        {
+            findViewById(R.id.btnAddEvento).setVisibility(View.VISIBLE);
+            findViewById(R.id.btnOut).setVisibility(View.VISIBLE);
+            findViewById(R.id.btnQui).setVisibility(View.GONE);
+            vMessaggio.setText("Per effettuare il Log-out :  ");
+        }
 
         vLogOut.setOnClickListener(this);
 
@@ -159,9 +175,14 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
                     // Estraggo le informazioni sull'evento in questione
                     Evento evento = (Evento) data.getSerializableExtra(EXTRA_EVENTO);
 
+
                     if (evento != null) {
                         // Elimino l'evento nel datasource
                         dataSource.deleteEvento(numeroEventoCorrente);
+
+                        // All'atto dell'eliminazione cancello anche dal Database
+                        myRef.child(evento.getNumeroEvento()).removeValue();
+
                         // Aggiorno l'elenco degli eventi
                         adapter.setElencoEventi(dataSource.getElencoEvento());
                     }
@@ -173,6 +194,8 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
         }
 
     }
+
+
 
     // Creazione del context menu al click prolungato sulla lista degli eventi
     @Override
@@ -243,6 +266,10 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
             Toast.makeText(getApplicationContext(), "Il LOG-OUT ha avuto esito positivo. ", Toast.LENGTH_SHORT).show();
             CODICE_UTENTE="0";
             currentFirebaseUser=null;
+            findViewById(R.id.btnOut).setVisibility(View.GONE);
+            findViewById(R.id.btnQui).setVisibility(View.VISIBLE);
+            findViewById(R.id.btnAddEvento).setVisibility(View.GONE);
+            vMessaggio.setText("Per effettuare il Log-in :  ");
         }
         else
         {

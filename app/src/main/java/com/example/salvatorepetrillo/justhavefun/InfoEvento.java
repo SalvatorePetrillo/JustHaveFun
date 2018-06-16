@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.salvatorepetrillo.justhavefun.datamodel.Evento;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class InfoEvento extends AppCompatActivity {
 
@@ -21,20 +23,21 @@ public class InfoEvento extends AppCompatActivity {
 
     private final String EXTRA_EVENTO = "evento";
 
-    private static int C = 0;
 
+
+    FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_evento);
 
-        if(C==0)
-        {
+        if (currentFirebaseUser == null){
             findViewById(R.id.btnEffettuaPrenotazione).setVisibility(View.GONE);
-            C=C+1;
         }
-
+        else {
+            findViewById(R.id.btnEffettuaPrenotazione).setVisibility(View.VISIBLE);
+        }
         vNome = findViewById(R.id.txtNomeEvento);
         vDescrizione = findViewById(R.id.txtDescrizioneEvento);
         vPrenota = findViewById(R.id.btnEffettuaPrenotazione);

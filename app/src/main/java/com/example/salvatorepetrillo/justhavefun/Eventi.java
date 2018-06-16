@@ -45,17 +45,16 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
     public String CODICE_UTENTE="0";
 
 
-    private static int K = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eventi);
 
-        if(K==0)
-        {
+        if(currentFirebaseUser == null){
             findViewById(R.id.btnAddEvento).setVisibility(View.GONE);
-            K=K+1;
+        }
+        else{
+            findViewById(R.id.btnAddEvento).setVisibility(View.VISIBLE);
         }
 
 

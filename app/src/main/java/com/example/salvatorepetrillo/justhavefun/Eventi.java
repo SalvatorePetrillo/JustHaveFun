@@ -48,7 +48,7 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
     private String numeroEventoCorrente;
 
     FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-    public String CODICE_UTENTE="0";
+    public String CODICE_UTENTE;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference(FB_NODO_EVENTI1);
@@ -212,7 +212,9 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
         Evento evento = adapter.getItem(info.position); //Chiedo l'evento all'adapter
         // All'interno del menù a tendina che si apre devo capire l'elemento selezionato
 
-        String amm = evento.getAmministratoreEvento();
+        final String amm = evento.getAmministratoreEvento();
+
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
 
         if(currentFirebaseUser==null)
         {

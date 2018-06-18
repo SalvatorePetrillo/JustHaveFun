@@ -28,7 +28,5 @@ public class prenotazione extends AppCompatActivity {
         vPrenota.setText("Il codice generato è il seguente: ");
         vCodice.setText(FB_NODO_CODICE_UTENTE);
 
-        //dobbiamo variare il messaggio di risposta a seconda di se la prenotazione è generata correttamente o meno
-        //dobbiamo generare un codice univoco da dare all'utente
     }
 }

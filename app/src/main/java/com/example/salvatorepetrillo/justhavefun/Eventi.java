@@ -143,7 +143,7 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
     protected void onDestroy()
     {
         super.onDestroy();
-        dataSource.terminaOsservazioneStudenti();
+        dataSource.terminaOsservazioneEventi();
     }
 
 
@@ -222,7 +222,6 @@ public class Eventi extends AppCompatActivity implements View.OnClickListener{
         }
         else
         {
-
             CODICE_UTENTE =currentFirebaseUser.getUid();
         }
 

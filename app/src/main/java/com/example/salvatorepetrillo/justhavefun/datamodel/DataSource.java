@@ -72,7 +72,7 @@ public class DataSource extends Fragment{
         ref.addValueEventListener(listenerEventi);
     }
 
-    public void terminaOsservazioneStudenti()
+    public void terminaOsservazioneEventi()
     {
         if(listenerEventi != null)
         {

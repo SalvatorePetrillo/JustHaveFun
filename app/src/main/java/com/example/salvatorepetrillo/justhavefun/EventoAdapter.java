@@ -47,7 +47,7 @@ public class EventoAdapter extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.activity_riga_evento, null);
         }
 
-        //ottengo  l'ID corrente
+        //ottengo il nome completo corrente
         TextView vNomeCompleto = view.findViewById(R.id.txtNomeCompleto);
 
         //imposto i valori da visualizzare

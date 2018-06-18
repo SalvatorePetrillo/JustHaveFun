@@ -28,8 +28,6 @@ public class EditEventoActivity extends AppCompatActivity {
     FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
     public String CODICE_UTENTE= currentFirebaseUser.getUid();
 
-    private String codiceVecchio;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

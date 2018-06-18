@@ -54,7 +54,7 @@ public class AggiungiEvento extends AppCompatActivity {
                     DataSource dataSource = DataSource.getIstance();
                     dataSource.addEvento(evento);
 
-                    // Creo un intent e torno ...
+                    // Creo un intent e torno nella layout principale
                     Intent intent = new Intent(getApplicationContext(),Eventi.class);
                     startActivity(intent);
 
